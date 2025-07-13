@@ -15,9 +15,10 @@ local function apply_eyeliner(y, tokens)
   local function apply(token)
     local _let_2_ = token
     local x = _let_2_["x"]
-    local freq = _let_2_["freq"]
     local hl_group
-    if (freq == 1) then
+    local cursor_x = vim.fn.getcursorcharpos()[3]
+    local gotoRight = cursor_x < x
+    if (gotoRight) then
       hl_group = "EyelinerPrimary"
     else
       hl_group = "EyelinerSecondary"
